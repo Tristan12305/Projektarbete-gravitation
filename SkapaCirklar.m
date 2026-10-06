@@ -1,16 +1,8 @@
-function [area, position] = SkapaCirklar()
+function [radie, position] = SkapaCirklar()
     area = randi([1, 50], 3);
     position = RandomPosition();
 
     radie = sqrt(area / pi);
-    figure; hold on; axis equal;
-
-    theta = linspace(0, 2*pi, 100);
-    for i = 1:3
-        x = position(i,1) + radie(i) * cos(theta);
-        y = position(i,2) + radie(i) * sin(theta);
-        fill(x, y, 1);
-    end
 end
 
 function pos = RandomPosition()
