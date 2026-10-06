@@ -1,5 +1,5 @@
 clc
 clear
 
-[radie, position] = SkapaCirklar()
+[radie, massa, position] = SkapaCirklar()
 
