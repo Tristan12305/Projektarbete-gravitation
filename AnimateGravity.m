@@ -1,4 +1,4 @@
-function = AnimateGravity(xpos,ypos,radie)
+function AnimateGravity(xpos,ypos,radie)
 
 N = size(xpos, 2);
 numObjects = size(xpos, 1);
