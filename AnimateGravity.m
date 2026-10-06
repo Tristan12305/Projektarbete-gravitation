@@ -18,8 +18,8 @@ end
 for k = 1:N
     
     for i = 1:numObjects
-        trajectory(i).XData = xpos(i,k);
-        trajectory(i).YData = ypos(i,k);
+        trajectory(i).XData = xpos(i,1:k);
+        trajectory(i).YData = ypos(i,1:k);
         position(i).XData = xpos(i,k);
         position(i).YData = ypos(i,k);
     end
