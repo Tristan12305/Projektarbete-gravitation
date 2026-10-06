@@ -1,5 +1,5 @@
 clc
 clear
 
-[area, position] = SkapaCirklar();
+[radie, position] = SkapaCirklar()
 

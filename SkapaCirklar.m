@@ -1,5 +1,5 @@
 function [radie, position] = SkapaCirklar()
-    area = randi([1, 50], 3);
+    area = randi([1, 50], 3, 1);
     position = RandomPosition();
 
     radie = sqrt(area / pi);
