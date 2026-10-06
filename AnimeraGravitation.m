@@ -1,4 +1,4 @@
-function AnimateGravity(xpos,ypos,radie)
+function AnimeraGravitation(xpos,ypos,radie)
 
 %dt = 1;
 %t = 0:dt:1e3;
@@ -13,6 +13,10 @@ figure;
 hold on
 axis equal
 grid on
+title('Gravitationsimulering')
+xlabel('X Position (m)')
+ylabel('Y Position (m)')
+
 xlim([min(xpos(:)) max(xpos(:))])
 ylim([min(ypos(:)) max(ypos(:))])
 
@@ -24,7 +28,7 @@ for i = 1:numObjects
 end
 
 for k = 1:N
-    
+
     for i = 1:numObjects
         trajectory(i).XData = xpos(i,1:k);
         trajectory(i).YData = ypos(i,1:k);
