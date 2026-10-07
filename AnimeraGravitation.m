@@ -10,15 +10,15 @@ N = size(xpos, 2);
 numObjects = size(xpos, 1);
 
 figure;
-hold on
 axis equal
+hold on
 grid on
 title('Gravitationsimulering')
 xlabel('X Position (m)')
 ylabel('Y Position (m)')
 
-xlim([min(xpos(:)) max(xpos(:))])
-ylim([min(ypos(:)) max(ypos(:))])
+xlim([-50 50])
+ylim([-50 50])
 
 theta = linspace(0, 2*pi, 100);
 
@@ -37,7 +37,7 @@ for k = 1:N
     end
 
     drawnow;
-    pause(0.1)
+    pause(0.01)
 end
 
 end

@@ -1,9 +1,9 @@
-function [radie, m, position] = SkapaCirklar()
+function [radie, m, position] = SkapaMassor()
 
-    rho = 5516; %kg/m^3
+    rho = 5516*1000; %kg/m^3
     area = randi([1, 50], 3, 1); %m^2
 
-    position = randi([-1000, 1000], 3, 2); %m
+    position = randi([-40, 40], 3, 2); %m
 
     radie = sqrt(area / pi); %m
 

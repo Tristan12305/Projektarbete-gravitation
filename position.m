@@ -12,33 +12,17 @@ ypos(1,1) = position(1, 2); ypos(2,1) = position(2, 2); ypos(3,1) = position(3, 
 
 tspan = 0:dt:t;
 l = 0;
+N = size(m, 1);
 for i = 1:length(tspan)
     Fx = zeros(1, length(m));
     Fy = zeros(1, length(m));
-    for j = 1:size(m, 1)
-        for k = j+1:size(m, 1)
+    for j = 1:N
+        for k = j+1:N
             
-            l = l + 1;
             dx = xpos(j, i) - xpos(k, i);
             dy = ypos(j, i) - ypos(k, i);
 
             d = sqrt(dx^2 + dy^2);
-
-            %if d <= 0.1
-                %m(i) = m(i) + m(j);
-                %xpos(i) = (m(i) * xpos(i) + m(j) * xpos(j)) / m(i);
-                %ypos(i) = (m(i) * ypos(i) + m(j) * ypos(j)) / m(i);
-                %velx(i) = (m(i) * velx(i) + m(j) * velx(j)) / m(i);
-                %vely(i) = (m(i) * vely(i) + m(j) * vely(j)) / m(i);
-
-                %xpos(j) = [];
-                %ypos(j) = [];
-                %velx(j) = [];
-                %vely(j) = [];
-                %m(j) = [];
-                %break;
-            %end
-
             F = G * (m(j) * m(k)) / d^2;
 
             Fxij = F * dx / d;
@@ -48,18 +32,34 @@ for i = 1:length(tspan)
             Fy(j) = Fy(j) + Fyij;
             Fx(k) = Fx(k) - Fxij;
             Fy(k) = Fy(k) - Fyij;
+
+            ax = -Fx / m(j);
+            ay = -Fy / m(j);
+
+            %if d <= 1
+            %    m(j) = m(j) + m(k);
+            %    xpos(j,i) = (m(j) * xpos(j,i) + m(k) * xpos(k,i)) / m(j);
+            %    ypos(j,i) = (m(j) * ypos(j,i) + m(k) * ypos(k,i)) / m(j);
+            %    velx(j) = (m(j) * velx(j) + m(k) * velx(k)) / m(j);
+            %    vely(j) = (m(j) * vely(j) + m(k) * vely(k)) / m(j);
+
+            %    xpos(k) = [];
+            %    ypos(k) = [];
+            %    velx(k) = [];
+            %    vely(k) = [];
+            %    m(k) = [];
+            %    N = N-1;
+            %end
+            
         end
-        ax = Fx / m(j);
-        ay = Fy / m(j);
     end
-    
+    size(ax)
+    size(velx)
     velx = velx + ax.* dt;
     vely = vely + ay.* dt;
-    xpos(:,i) = xpos(:,i) + transpose(velx) * dt;
-    ypos(:,i) = ypos(:,i) + transpose(vely) * dt;
+    xpos(:,i+1) = xpos(:,i) + transpose(velx) * dt;
+    ypos(:,i+1) = ypos(:,i) + transpose(vely) * dt;
     
-
-    
-
-end              
+end
+fprintf('Simulation Complete')              
 end

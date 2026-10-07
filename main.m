@@ -1,10 +1,10 @@
 clc
 clear
 
-dt = 0.1;
-t = 1;
+dt = 1;
+t = 1000;
 
-[radie, m, position] = SkapaCirklar();
+[radie, m, position] = SkapaMassor();
 
 [xpos, ypos, m] = Position(m, position, dt, t);
 
