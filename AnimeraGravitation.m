@@ -1,4 +1,4 @@
-function AnimeraGravitation(xpos,ypos,radie)
+function AnimeraGravitation(xpos,ypos,radie,v)
 
 %dt = 1;
 %t = 0:dt:1e3;
@@ -9,7 +9,7 @@ function AnimeraGravitation(xpos,ypos,radie)
 N = size(xpos, 2);
 numObjects = size(xpos, 1);
 
-figure;
+fig = figure;
 axis equal
 hold on
 grid on
@@ -26,8 +26,9 @@ for i = 1:numObjects
     trajectory(i) = plot(xpos(i, 1), ypos(i, 1), '-');
     position(i) = fill(xpos(i,1) + radie(i) * cos(theta), ypos(i,1) + radie(i) * sin(theta), 1);
 end
+maxFrames = min(N, 60 * 60);
 
-for k = 1:N
+for k = 1:maxFrames
 
     for i = 1:numObjects
         trajectory(i).XData = xpos(i,1:k);
@@ -37,6 +38,8 @@ for k = 1:N
     end
 
     drawnow;
+    %frame = getframe(figure);
+    writeVideo(v, getframe(fig));
     pause(0.01)
 end
 
