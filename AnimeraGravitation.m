@@ -37,7 +37,7 @@ for k = 1:N
     end
 
     drawnow;
-    pause(0.01)
+    pause(0.1)
 end
 
 end
